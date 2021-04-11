@@ -12,6 +12,7 @@ export default async (req, res) => {
     const savedUser = await prisma.user.create({ data: user });
     res.status(200).json(savedUser);
   } catch (err) {
+    console.log(err)
     res.status(400).json({ message: 'Something went wrong' });
   }
 };
