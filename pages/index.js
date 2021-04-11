@@ -32,7 +32,7 @@ export default function Home({ initialUsers }) {
 
   	return (
 		<div className="container mx-auto m-20">
-			<div className="grid grid-cols-1">
+			<div className="h-full flex justify-center items-center">
 				<SignUp
 					onSubmit={async (user, e) => {
 						try {
@@ -44,9 +44,11 @@ export default function Home({ initialUsers }) {
 						}
 					}}
 				/>
+			</div>
+			<div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 				{users.map((user, index) => (
-					<div className="rounded-md bg-gray-50 m-5" key={index}>
-						<pre className="p-10">{JSON.stringify(user, null, 2)}</pre>
+					<div className="rounded-md bg-dark-300 m-5" key={index}>
+						<pre className="text-white p-10">{JSON.stringify(user, null, 2)}</pre>
 					</div>
 				))}
 			</div>
