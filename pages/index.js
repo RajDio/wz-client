@@ -36,7 +36,10 @@ export default function Home({ initialUsers }) {
 				<SignUp
 					onSubmit={async (user, e) => {
 						try {
-							await saveUser(user);
+							await saveUser({
+								...user,
+								username: user.username.toLowerCase(),
+							});
 							setUsers([...users, user]);
 							e.target.reset();
 						} catch (err) {
@@ -47,7 +50,7 @@ export default function Home({ initialUsers }) {
 			</div>
 			<div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 				{users.map((user, index) => (
-					<div className="rounded-md bg-dark-300 m-5" key={index}>
+					<div className="rounded-lg bg-dark-300 m-5" key={index}>
 						<pre className="text-white p-10">{JSON.stringify(user, null, 2)}</pre>
 					</div>
 				))}

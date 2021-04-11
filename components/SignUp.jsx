@@ -10,7 +10,7 @@ export default function SignUp (props) {
 			<div className="mb-4">
 				<label className="block text-white text-sm font-bold mb-2">Platform</label>
 				<div className="relative">
-					<select className="block appearance-none w-full bg-dark-900 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-purple-400" name="platform" {...register("platform", { required: true })}>
+					<select className="block appearance-none w-full bg-dark-900 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none" name="platform" {...register("platform", { required: true })}>
 						<option value="psn">Playstation</option>
 						<option value="xbl">Xbox Live</option>
 						<option value="battle">Battle.net</option>
@@ -20,15 +20,15 @@ export default function SignUp (props) {
 					</div>
 				</div>
 			</div>
-			<div className="mb-4">
-				<label className="block text-white text-sm font-bold mb-2">Phone Number</label>
-				<input className="block appearance-none text-white w-full bg-dark-900  py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-purple-400 placeholder-purple-400 mb-3" name="phoneNumber" {...register("phoneNumber", { required: true })} placeholder="(973) 555-0808" />
-				{errors.phoneNumber && <p className="text-red-500 text-xs italic">Please enter a valid phone number.</p>}
-			</div>
 			<div className="mb-6">
 				<label className="block text-white text-sm font-bold mb-2">Username</label>
-				<input className="block appearance-none text-white w-full bg-dark-900 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-purple-400 placeholder-purple-400 mb-3" name="username" {...register("username", { required: true })} placeholder="************"/>
+				<input className="block appearance-none text-white w-full bg-dark-900 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none placeholder-gray-600 mb-3" name="username" {...register("username", { required: true })} placeholder="************"/>
 				{errors.username && <p className="text-red-500 text-xs italic">Please enter a valid username.</p>}
+			</div>			
+			<div className="mb-4">
+				<label className="block text-white text-sm font-bold mb-2">Phone Number</label>
+				<input className="block appearance-none text-white w-full bg-dark-900  py-3 px-4 pr-8 rounded leading-tight focus:outline-none placeholder-gray-600 mb-3" name="phoneNumber" {...register("phoneNumber", { required: true })} placeholder="(973) 555-0808" />
+				{errors.phoneNumber && <p className="text-red-500 text-xs italic">Please enter a valid phone number.</p>}
 			</div>
 			<div className="flex items-center justify-center">
 				<button type="submit" className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

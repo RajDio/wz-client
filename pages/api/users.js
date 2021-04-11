@@ -9,6 +9,16 @@ export default async (req, res) => {
 
   try {
     const user = JSON.parse(req.body);
+    const users = await prisma.user.findMany({
+      where: {
+        username: user.username,
+        platform: user.platform,
+        phoneNumber: user.phoneNumber,
+      }
+    });
+    if (users.length > 0) {
+      throw new Error('User already exists!');
+    }
     const savedUser = await prisma.user.create({ data: user });
     res.status(200).json(savedUser);
   } catch (err) {
