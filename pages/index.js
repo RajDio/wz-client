@@ -1,7 +1,33 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { PrismaClient } from '@prisma/client'
+import { useState } from 'react';
 
-export default function Home() {
+const prisma = new PrismaClient();
+
+export async function getServerSideProps() {
+  const users = await prisma.user.findMany();
+  return {
+    props: {
+      initialUsers: users
+    }
+  };
+}
+
+async function saveUser(user) {
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify(user)
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return await response.json();
+}
+
+export default function Home({ initialUsers }) {
+  const [users, setUsers] = useState(initialUsers);
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +37,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Deployed <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -48,6 +74,13 @@ export default function Home() {
             </p>
           </a>
         </div>
+        
+        {users.map((user, index) => (
+          <div className={styles.grid} key={index}>
+            <pre>{JSON.stringify(user, null, 2)}</pre>
+          </div>
+        ))}
+        
       </main>
 
       <footer className={styles.footer}>
