@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 export default function SignUp (props) {
 
-	const { handleSubmit, register, required } = useForm();
+	const { handleSubmit, register, formState: { errors } } = useForm();
 
 	return (
 		<form className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-5 max-w-xs" onSubmit={handleSubmit(props.onSubmit)}>
@@ -22,12 +22,13 @@ export default function SignUp (props) {
 			</div>
 			<div className="mb-4">
 				<label className="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
-				<input className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-600" name="phoneNumber" {...register("phoneNumber", { required: true })} placeholder="(973) 555-0808" />
+				<input className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-600 mb-3" name="phoneNumber" {...register("phoneNumber", { required: true })} placeholder="(973) 555-0808" />
+				{errors.phoneNumber && <p className="text-red-500 text-xs italic">Please enter a valid phone number.</p>}
 			</div>
 			<div className="mb-6">
 				<label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
 				<input className="block appearance-none w-full border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-600 mb-3" name="username" {...register("username", { required: true })} placeholder="************"/>
-				<p className="text-red-500 text-xs italic">Please choose a username.</p>
+				{errors.username && <p className="text-red-500 text-xs italic">Please enter a valid username.</p>}
 			</div>
 			<div className="flex items-center justify-between">
 				<button type="submit" className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
