@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { PrismaClient } from '@prisma/client'
 import { useState } from 'react';
+import Nav from './../components/Nav';
 import SignUp from './../components/SignUp';
 
 const prisma = new PrismaClient();
@@ -32,6 +33,7 @@ export default function Home({ initialUsers }) {
 
   	return (
 		<div className="container mx-auto m-20">
+			<Nav />
 			<div className="h-full flex justify-center items-center">
 				<SignUp
 					onSubmit={async (user, e) => {

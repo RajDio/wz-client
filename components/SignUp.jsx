@@ -7,6 +7,9 @@ export default function SignUp (props) {
 
 	return (
 		<form className="bg-dark-600 rounded-lg px-8 pt-6 pb-8 m-5 w-96" onSubmit={handleSubmit(props.onSubmit)}>
+			<svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto my-4" viewBox="0 0 20 20" fill="white">
+                <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+            </svg>
 			<div className="mb-4">
 				<label className="block text-white text-sm font-bold mb-2">Platform</label>
 				<div className="relative">
