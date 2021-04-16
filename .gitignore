@@ -105,3 +105,4 @@ dist
 
 # Environment variable
 .env
+.env.local

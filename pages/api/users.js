@@ -14,7 +14,7 @@ export default async (req, res) => {
     })
 
     if (response.status === '409') {
-      throw new Error('User already exists')
+      return res.status(409).send('User already exists')
     }
     res.status(201).send(response.body);
   } catch (err) {
